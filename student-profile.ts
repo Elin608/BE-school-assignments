@@ -16,10 +16,25 @@
 // }
 // console.log(formatGreeting("Kilian"));
 
-const ages :number []= [2,20,5,40,100]
-const agesInFiveYears=ages.map(age=> age+10);
-console.log(agesInFiveYears);
+// const ages :number []= [2,20,5,40,100]
+// const agesInFiveYears=ages.map(age=> age+10);
+// console.log(agesInFiveYears);
 
-const names:string [] = ["Kilian", "Leana", "Cleo" ,"Hero", "Wio"];
-const shortNames = names.filter((names) =>names.length<=4);
-console.log(shortNames);
+// const names:string [] = ["Kilian", "Leana", "Cleo" ,"Hero", "Wio"];
+// const shortNames = names.filter((names) =>names.length<=4);
+// console.log(shortNames);
+const scores:number[]=[60,82,20,14,12,4,66,23]
+
+const highScore=scores.filter((scores)=> scores >=50);
+console.log(highScore);
+
+const grades = highScore.map((score) =>  
+score >= 80? "A":
+score>= 70? "B":
+score>= 60? "C": "F"
+
+);
+console.log(grades); 
+
+const failed = scores.filter ((score) =>score<50);
+console.log(failed.length);
