@@ -51,31 +51,113 @@
 
 // }
 // console.log(myBook.title);
-interface Adress{
-    city:string;
-    postalCode?:string;
+// interface Adress{
+//     city:string;
+//     postalCode?:string;
+// }
+// interface Person{
+//     name:string;
+//     age:number;
+//     adress:Adress;
+// }
+// const person1:Person = {
+//     name: "Johanna",
+//     age:10,
+//     adress:{
+//         city: "Madrid",
+//         postalCode: "03189"
+//     }
+// }
+// const person2:Person ={
+//     name:"Joakim",
+//     age:12,
+//     adress:{
+//         city: "Alicante",
+//         postalCode: "031222",
+//     }
+// }
+// console.log(person1.adress.city); 
+
+interface Movie {
+    id: number;
+    title: string;
+    rating: number;
+    geners: string[];
+
 }
-interface Person{
-    name:string;
-    age:number;
-    adress:Adress;
+const movies: Movie[] = [
+    
+       {id: 1,
+        title: "Moana",
+        rating: 10,
+        geners: ["Disney"]},
+
+
+        {id: 2,
+        title: "Hello",
+        rating: 100,
+        geners: ["Thriller"]},
+
+        {id: 3,
+        title: "GoodBye",
+        rating: 2,
+        geners: ["Romance"]},
+
+
+        {id: 4,
+        title: "Hero",
+        rating: 88,
+        geners: ["Disney"]}
+    
+
+];
+
+function getMoviesByGenre(movies: Movie[], genre: string):
+    Movie[] {
+    return movies.filter((movie) =>
+        movie.geners.includes(genre)
+    );
 }
-const person1:Person = {
-    name: "Johanna",
-    age:10,
-    adress:{
-        city: "Madrid",
-        postalCode: "03189"
-    }
-}
-const person2:Person ={
-    name:"Joakim",
-    age:12,
-    adress:{
-        city: "Alicante",
-        postalCode: "031222",
-    }
-}
-console.log(person1.adress.city);
-console.log(person2.adress.city);
+console.log(getMoviesByGenre ( movies, "Disney"));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
