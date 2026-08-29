@@ -78,48 +78,105 @@
 // }
 // console.log(person1.adress.city); 
 
-interface Movie {
+// interface Movie {
+//     id: number;
+//     title: string;
+//     rating: number;
+//     geners: string[];
+
+// }
+// const movies: Movie[] = [
+
+//        {id: 1,
+//         title: "Moana",
+//         rating: 10,
+//         geners: ["Disney"]},
+
+
+//         {id: 2,
+//         title: "Hello",
+//         rating: 100,
+//         geners: ["Thriller"]},
+
+//         {id: 3,
+//         title: "GoodBye",
+//         rating: 2,
+//         geners: ["Romance"]},
+
+
+//         {id: 4,
+//         title: "Hero",
+//         rating: 88,
+//         geners: ["Disney"]}
+
+
+// ];
+
+// function getMoviesByGenre(movies: Movie[], genre: string):
+//     Movie[] {
+//     return movies.filter((movie) =>
+//         movie.geners.includes(genre)
+//     );
+// }
+// console.log(getMoviesByGenre ( movies, "Disney"));
+
+interface Product {
     id: number;
-    title: string;
-    rating: number;
-    geners: string[];
-
+    name: string;
+    price: number;
+    tags: string[];
 }
-const movies: Movie[] = [
-    
-       {id: 1,
-        title: "Moana",
-        rating: 10,
-        geners: ["Disney"]},
+const products: Product[] = [
+
+    {
+        id: 1,
+        name: "pink",
+        price: 900,
+        tags: ["hahaha"]
+    },
 
 
-        {id: 2,
-        title: "Hello",
-        rating: 100,
-        geners: ["Thriller"]},
+    {
+        id: 2,
+        name: "green",
+        price: 2000,
+        tags: ["ha"]
+    },
 
-        {id: 3,
-        title: "GoodBye",
-        rating: 2,
-        geners: ["Romance"]},
+    {
+        id: 3,
+        name: "blue",
+        price: 300,
+        tags: ["work"]
+    },
+
+    {
+        id: 4,
+        name: "yellow",
+        price: 7000,
+        tags: ["work"]
+    },
+
+    {
+        id: 5,
+        name: "brown",
+        price: 9000,
+        tags: ["work"]
+    },
 
 
-        {id: 4,
-        title: "Hero",
-        rating: 88,
-        geners: ["Disney"]}
-    
+
 
 ];
+const cheapProducts = products.filter((product) =>
+    product.price < 1000);
+console.log(cheapProducts);
 
-function getMoviesByGenre(movies: Movie[], genre: string):
-    Movie[] {
-    return movies.filter((movie) =>
-        movie.geners.includes(genre)
-    );
-}
-console.log(getMoviesByGenre ( movies, "Disney"));
+const workProducts=products.filter((product)=>
+    product.tags.includes("work"))
+.map((product)=>product.name);
 
+console.log(workProducts);
 
 
 
