@@ -33,7 +33,8 @@ const compareSize = (a: number, b: number): string => {
 console.log(compareNumbers(100, 1, compareSize));
 console.log(compareNumbers(1, 100, compareSize));
 
-// Skill 2: Asynchronous Callbacks: 
+
+// Skill 2: Countdown Timer:
 // "After countdown" runs before "Time´s up" because setTimeout waits 3 seconds.
 console.log("Before countdown");
 type countDownCallback = () => void;
@@ -50,6 +51,93 @@ countDown(3, () => {
 });
 
 console.log("After countdown");
+
+// Delayed Greeting:
+
+
+
+const delayedGreeting = (name: string, delay: number, callback: () => void):
+    void => {
+    setTimeout(() => {
+
+        console.log(`Hey ${name}, thanks for wating`);
+        callback();
+    }, delay);
+};
+
+
+delayedGreeting("Kilian", 1500, () => {
+    console.log("Callback executed!");
+
+});
+
+// Skill 3: Temperature Converter:
+
+type ConvertCallback = (celsius: number) => number;
+const convertTemperature = (celsius: number, callback: ConvertCallback): number => {
+    return callback(celsius)
+};
+const kelvin = convertTemperature(25, (celsius) => {
+    return celsius + 1;
+});
+const fahrenheit = convertTemperature(25, (celsius) => {
+    return celsius + 3
+});
+console.log(kelvin);
+console.log(fahrenheit);
+
+
+//Skill 4: Promises, Your Own Promises:
+
+const inStock = true;
+const checkStock = new Promise<string>((resolve, reject) => {
+    console.log("Check stock");
+    if (inStock) {
+        resolve("The item is in stock");
+    } else {
+        reject("The iteam is out of stock")
+    }
+});
+console.log("Promise created");
+
+checkStock
+    .then((message) => {
+        console.log(message);
+    })
+    .catch((error) => {
+        console.log(error)
+    });
+
+//Skill 5: A Different Advice Slip:
+
+type adviceSlipType = {
+    slip: {
+        id: number;
+        advice: string;
+    };
+};
+const fetchAdviseAndLogin = (id: number): void => {
+    fetch(`https://api.adviceslip.com/advice/${id}`)
+
+        .then((response) => response.json())
+
+        .then((data: adviceSlipType) => {
+            console.log(`id: ${data.slip.id}, advice: ${data.slip.advice}`);
+
+        })
+        .catch((error) => {
+            console.log("Error", error);
+
+        });
+};
+fetchAdviseAndLogin(1);
+fetchAdviseAndLogin(2);
+fetchAdviseAndLogin(3);
+
+
+
+
+
 
 
 
