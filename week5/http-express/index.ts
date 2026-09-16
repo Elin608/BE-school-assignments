@@ -40,9 +40,16 @@ app.get("/featured", (req, res) => {
 //Task 5:
 //I use res.send because it only returns a plain text message.
 app.get("/about", (req, res) => {
-    res.send("Welcome to the world of street art!");
+    res.status(200).send("Welcome to the world of street art!");
 });
 
 //Task 6: Done
 
+//Task 7: Done
+
+//Task 8:
+app.get("/maintenance", (req, res) => {
+    res.status(503).send("We´re down for maintenance, check back soon!")
+});
+//Task 9: Done
 
