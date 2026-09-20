@@ -1,6 +1,7 @@
 import express from "express";
 const app = express();
 app.use(express.json());
+
 type Party = {
     id: number;
     name: string;
@@ -17,30 +18,42 @@ let parties: Party[] = [
     { id: 2, name: "Moderaterna", leader: "Ulf", seats: 20 },
 ];
 
-//Task 1:
+app.get("/parties/seats-total", (req, res) => {
+    let totalSeats = 0;
+    parties.forEach((party) => {
+        totalSeats += party.seats;
+    });
+    res.json({
+        totalSeats: totalSeats
+    });
 
+});
 app.get("/parties", (req, res) => {
     res.status(200).json(parties);
 });
+
 app.post("/parties", (req, res) => {
     const { name, leader, seats } =
         req.body;
+    if (!name || !leader) {
+        return res.status(400).json({
+            message: "Name and leader are required"
+        });
+    }
     const newParty: Party = {
         id: parties.length + 1,
         name: name,
         leader: leader,
         seats: seats,
     };
-
     parties.push(newParty);
     res.status(201).json(newParty);
-
 });
 
 app.put("/parties/:id", (req, res) => {
+    console.log(req.body);
     const id =
         Number(req.params.id);
-
 
     const party = parties.find((party) => party.id === id);
     if (!party) {
@@ -49,9 +62,9 @@ app.put("/parties/:id", (req, res) => {
         });
     }
     const { name, leader, seats } = req.body;
-    if (name! == undefined) party.name = name;
-    if (leader! == undefined) party.leader = leader;
-    if (seats! == undefined) party.seats = seats;
+    if (name !== undefined) party.name = name;
+    if (leader !== undefined) party.leader = leader;
+    if (seats !== undefined) party.seats = seats;
     res.status(200).json(party);
 });
 
@@ -65,15 +78,10 @@ app.delete("/parties/:id", (req, res) => {
     const deletedParty = parties.splice(index, 1)[0];
     res.status(200).json({ message: " Party removed", party: deletedParty });
 });
-
-
-
-
-
-
-
 const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost: ${PORT}`)
 });
+
+
 
