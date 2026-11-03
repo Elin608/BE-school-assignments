@@ -1,0 +1,7 @@
+CREATE TABLE authors (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR (255) NOT NULL
+);
+ALTER TABLE BOOKS
+ADD COLUMN author_id INTEGER REFERENCES authors(id);
+
