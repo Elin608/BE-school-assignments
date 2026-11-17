@@ -19,6 +19,22 @@ It use AI but it follows the same step every time.
 ### Question 2
 Automation is faster, cheaper and test are easier. 
 
+## Exercise 2
+### Question 1
+With memory the agent remebered my name. Without it did not remember my name. With contex window 1 the agent only rememeber the latest conversation. Contex window length means how many past interactions it remembers. 
+### Question 2
+A larger context window costs more money and makes the agent slower. 
+
+## Exercise 3
+### Question 1
+The agent use Get weather for the umbrella question but not for the other two. It choose when to use the tool. 
+### Question 2
+The agent decide when to use the tool. An automation follows fixed steps. 
+### Question 3
+
+
+
+
 
 
 
