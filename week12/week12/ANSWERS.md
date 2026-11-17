@@ -31,6 +31,18 @@ The agent use Get weather for the umbrella question but not for the other two. I
 ### Question 2
 The agent decide when to use the tool. An automation follows fixed steps. 
 ### Question 3
+With MCP other AI agents can use the weather tool too. Not just n8n. 
+
+## Exercise 4
+### Question 1
+API is lika a vending machine. 
+HTTP request is when we ask for something.
+Function does the work and get an answer.
+In my Express API GET/books returns a list of books. 
+
+### Question 2
+Agent still use the tool even with a vague descrition. 
+
 
 
 
