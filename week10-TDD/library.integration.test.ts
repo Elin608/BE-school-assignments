@@ -1,5 +1,5 @@
 import { test, expect } from "vitest";
-import { borrowBook } from "./library";
+import { borrowBook } from "./library.js";
 
 test("borrows dune", () => {
     const loan = borrowBook("dune", 7);

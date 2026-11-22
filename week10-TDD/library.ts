@@ -49,3 +49,5 @@ export const borrowBook = (
     const loanId = checkOutBook(book)
     return registerLoan(loanId, title, memberId)
 };
+
+const copies: number = "three";

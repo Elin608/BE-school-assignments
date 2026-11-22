@@ -1,5 +1,5 @@
 import { test, expect } from "vitest";
-import { PizzaTypeSchema, PizzaSchema, AmountSchema, OrderIdSchema } from "./pizzashop";
+import { PizzaTypeSchema, PizzaSchema, AmountSchema, OrderIdSchema } from "./pizzashop.js";
 
 test("accepts margherita", () => {
     expect(PizzaTypeSchema.parse("margherita")).toBe("margherita");

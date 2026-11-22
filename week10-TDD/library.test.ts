@@ -1,5 +1,5 @@
 import { test, expect } from "vitest";
-import { findBook, checkOutBook, registerLoan } from "./library";
+import { findBook, checkOutBook, registerLoan } from "./library.js";
 
 
 test("finds dune", () => {

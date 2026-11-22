@@ -25,4 +25,6 @@ jobs:
         cache: 'npm'
         cache-dependency-path: week10-TDD/package-lock.json
     - run: cd week10-TDD && npm ci
+    - run: npm run typecheck
     - run: cd week10-TDD && npm test
+  
