@@ -19,3 +19,5 @@ PUT/parties/:id
 DELETE/parties/:id
 ### Get totalseats
 GET/parties/seats-total
+
+[![CI](https://github.com/Elin608/BE-school-assignments/actions/workflows/ci.yml/badge.svg?branch=week12%2Fci)](https://github.com/Elin608/BE-school-assignments/actions/workflows/ci.yml)
