@@ -60,3 +60,7 @@ test("chargecustomer with decimal order ID", () => {
 test("chargeCustomer with zero amount", () => {
     expect(() => chargeCustomer(42, 0)).toThrow();
 });
+
+test ("should fail on purpose", ()=>{
+    expect(1).toBe(1);
+});
