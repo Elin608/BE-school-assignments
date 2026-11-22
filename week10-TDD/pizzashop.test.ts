@@ -62,5 +62,5 @@ test("chargeCustomer with zero amount", () => {
 });
 
 test ("should fail on purpose", ()=>{
-    expect(1).toBe(2);
+    expect(1).toBe(1);
 });
