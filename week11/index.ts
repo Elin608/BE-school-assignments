@@ -35,7 +35,7 @@ const dataDbConnection = async () => {
 
 };
 
-dataDbConnection();
+void dataDbConnection();
 
 
 app.get('/books', async (req, res) => {
@@ -72,7 +72,7 @@ app.get('/books/:id', async (req, res) => {
     if (!Number.isInteger(id)) {
         return res.status(400).json({ error: 'Invalid book ID' });
 
-        return;
+    
     }
     const book = await Book.findByPk(id);
     if (!book) {

@@ -4,10 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sonar": "dotenv -- npx @sonar/scan"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs"
+  "type": "commonjs",
+  "devDependencies": {
+    "@sonar/scan": "^5.1.0",
+    "dotenv-cli": "^11.1.0"
+  },
+  "dependencies": {
+    "@sentry/node": "^11.16.0",
+    "sequelize": "^6.37.8"
+  }
 }
