@@ -11,6 +11,7 @@ import { reportError } from "./utils.ts/reportError.js";
 
 
 
+
 Author.hasMany(Book, { foreignKey: 'author_id' });
 Book.belongsTo(Author, { foreignKey: 'author_id' });
 
@@ -19,6 +20,8 @@ Book.belongsToMany(Member, { through: Loan, foreignKey: 'book_id', otherKey: 'me
 
 const app = express();
 app.use(express.json());
+import cors from "cors";
+app.use(cors({ origin:"http://localhost:5173"}));
 
 const dataDbConnection = async () => {
     try {

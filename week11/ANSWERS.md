@@ -76,6 +76,24 @@ To make sure the code still works after each change.
 ### Question 2
 Yes, I removed unnecessary code.
 
+# Week 13 - React Frontend
+## Exercise 1
+### Question 1
+Frontend and backend use different packages. React is needed in the frontend, not for backend. 
+### Question 2
+Vite starts the frontend. The brownser updates automatically when I save. 
+
+## Exercise 2
+### Step 7
+The list of books is in response data.
+The total is response.data.length.
+The author´s name is in Author.name. 
+### Question 1
+Cors decide which websites can use the API. Brownser blocked the request beacuse it was not allowed. Postman does not has this rule. 
+### Question 2
+Fos better sequrity. When the website goes online we change to a new website adress. 
+
+
 
 
 
