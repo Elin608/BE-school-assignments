@@ -100,6 +100,16 @@ React uses a key to know which book is which. The ID is better because it does n
 useState stores the books and authors. 
 useEffect fetches the data when the page opens. Without [] it can fetch the data over and over again.
 
+## Exercise 4
+### Question 1
+event.preventDefault() stops the page from reloading. Without it the page reloads when we submit the form.
+### Question 2
+Id is uniue but names can be the same. The user could enter an ID that does not exist.
+### Question 3
+They can have different rules. We can use a shared schema. 
+
+
+
 
 
 
