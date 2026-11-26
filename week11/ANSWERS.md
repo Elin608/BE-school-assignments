@@ -93,6 +93,13 @@ Cors decide which websites can use the API. Brownser blocked the request beacuse
 ### Question 2
 Fos better sequrity. When the website goes online we change to a new website adress. 
 
+## Exercise 3
+### Question 1
+React uses a key to know which book is which. The ID is better because it does not change when a book is deleted but the index can change.
+### Question 2
+useState stores the books and authors. 
+useEffect fetches the data when the page opens. Without [] it can fetch the data over and over again.
+
 
 
 
