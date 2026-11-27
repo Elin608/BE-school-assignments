@@ -108,6 +108,15 @@ Id is uniue but names can be the same. The user could enter an ID that does not 
 ### Question 3
 They can have different rules. We can use a shared schema. 
 
+## Exercise 5
+### Question 1
+Filter checks each book and keeps all books excpect the one with the selected ID. 
+We create a new array so React can update the state. 
+### Question 2
+The book was deleted even though it had a loan. API allowed it. The user should see an error message. 
+
+
+
 
 
 
