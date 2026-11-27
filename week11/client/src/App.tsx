@@ -15,12 +15,12 @@ type Book = {
 
 function App() {
   const fetchBooks = async () => {
-    const response = await axios.get("http://localhost:3000/books");
+    const response = await axios.get(`http://localhost:3000/books`);
     setBooks(response.data);
   };
 
   const fetchAuthors = async () => {
-    const response = await axios.get("http://localhost:3000/authors");
+    const response = await axios.get(`http://localhost:3000/authors`);
     setAuthors(response.data);
 
   };
@@ -52,12 +52,17 @@ function App() {
       return
     }
     setErrors({});
+    
 
-    await axios.post("http://localhost:3000/books", result.data);
+await axios.post(`http://localhost:3000/books`, result.data);
     await fetchBooks();
   }
 
-
+const handleDelete = async (id: number)=>{
+  if (!window.confirm("Are you sure?")) return;
+  await axios.delete(`http://localhost:3000/books/${id}`);
+  setBooks(books.filter((book) => book.id !== id));
+};
   useEffect(() => {
     fetchBooks();
     fetchAuthors();
@@ -68,8 +73,12 @@ function App() {
       <p>{books.length} books in the library</p>
       <ul>
         {books.map((book) => (
+        
+
           <li key={book.id}>
             {book.title} by {book.Author?.name} ({book.publisher_year})
+              <button onClick ={() =>
+            handleDelete(book.id)}>Delete</button>
           </li>
         ))}
       </ul>
