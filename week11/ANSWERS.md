@@ -115,6 +115,18 @@ We create a new array so React can update the state.
 ### Question 2
 The book was deleted even though it had a loan. API allowed it. The user should see an error message. 
 
+## Exercise 6
+![Exercise 6](screenshots/week13-exercise6.PNG)
+### Question 1
+Put update the whole book.
+Patch update just selected fields.
+If genre is missing Put returns 400.
+With Patch genre stays unchanged.
+### Question 2
+
+
+
+
 
 
 

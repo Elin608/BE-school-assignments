@@ -8,8 +8,7 @@ import Member from './models/Member.js';
 import Loan from './models/Loan.js';
 import *as Sentry from "@sentry/node";
 import { reportError } from "./utils.ts/reportError.js";
-
-
+import { bookSchema, idParamSchema } from "./schemas.js";
 
 
 Author.hasMany(Book, { foreignKey: 'author_id' });
@@ -21,7 +20,7 @@ Book.belongsToMany(Member, { through: Loan, foreignKey: 'book_id', otherKey: 'me
 const app = express();
 app.use(express.json());
 import cors from "cors";
-app.use(cors({ origin:"http://localhost:5173"}));
+app.use(cors({ origin: "http://localhost:5173" }));
 
 const dataDbConnection = async () => {
     try {
@@ -34,13 +33,9 @@ const dataDbConnection = async () => {
         reportError(error, "database");
         console.error('Unable to connect to the database:', error);
     }
-
-
 };
 
 void dataDbConnection();
-
-
 app.get('/books', async (req, res) => {
     Sentry.addBreadcrumb({
         message: "Fetch books route",
@@ -68,14 +63,10 @@ app.get('/books', async (req, res) => {
         });
     }
 });
-
-
 app.get('/books/:id', async (req, res) => {
     const id = Number(req.params.id);
     if (!Number.isInteger(id)) {
         return res.status(400).json({ error: 'Invalid book ID' });
-
-    
     }
     const book = await Book.findByPk(id);
     if (!book) {
@@ -87,8 +78,6 @@ app.get('/books/:id', async (req, res) => {
 app.get("/debug-sentry", function mainHandler(req, res) {
     throw new Error("My first Sentry error!");
 });
-
-
 app.post('/books', async (req, res) => {
     Sentry.addBreadcrumb({
         message: "Create books route",
@@ -110,8 +99,6 @@ app.post('/books', async (req, res) => {
         res.status(500).json({ error: 'Database error' });
     }
 });
-
-
 app.patch('/books/:id', async (req, res) => {
 
     const id = Number(req.params.id);
@@ -127,7 +114,27 @@ app.patch('/books/:id', async (req, res) => {
     res.status(200).json(existingBook)
 });
 
+app.put("/books/:id", async (req, res) => {
+    try {
 
+        const params = idParamSchema.safeParse(req.params);
+        const body = bookSchema.safeParse(req.body);
+        ;
+        if (!params.success || !body.success) {
+            return res.status(400).json({ error: 'Invalid data' });
+        }
+        const book = await Book.findByPk(params.data.id);
+        if (!book) {
+            return res.status(404).json({ error: 'Book not found' })
+        }
+        await book.update(body.data);
+        res.status(200).json(book);
+    } catch (error) {
+        reportError(error, 'books');
+        console.error(error);
+        res.status(500).json({ error: 'Database error' });
+    }
+});
 app.delete('/books/:id', async (req, res) => {
     const id = Number(req.params.id);
     const book = await Book.findByPk(id);
@@ -137,9 +144,6 @@ app.delete('/books/:id', async (req, res) => {
     await book.destroy();
     res.status(204).send();
 });
-
-
-
 app.get('/authors', async (req, res) => {
     try {
         const authors = await Author.findAll();
@@ -233,8 +237,6 @@ app.post('/members', async (req, res) => {
         res.status(500).json({ error: 'Database error' });
     }
 });
-
-
 app.get('/members/:id/loans', async (req, res) => {
     const id = Number(req.params.id);
     try {
@@ -250,8 +252,6 @@ app.get('/members/:id/loans', async (req, res) => {
         res.status(500).json({ error: 'Database error' });
     }
 });
-
-
 
 Sentry.setupExpressErrorHandler(app);
 
